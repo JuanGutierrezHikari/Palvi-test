@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Prueba Juan Gutierrez Palvi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Reporte ejecutivo de métricas.
 
-Currently, two official plugins are available:
+# Cómo correrlo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Abrir http://localhost:5173
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Decisiones técnicas
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Vite:**  setup mínimo, HMR rápido, tipos sin overhead
+- **Tailwind CSS:**  utilidades directas en el componente, sin CSS separado
+- **Recharts:**  declarativo y suficiente para este scope; evité librerías más pesadas
+- **Sin estado global:**  useState + hooks propios es suficiente para una sola página
+- **`useAlerts`**  lógica de alertas separada del rendering; usa el campo `direction` del JSON para determinar si una tendencia es buena o mala sin hardcodear el dominio
+- **`useDataset`**  única fuente de verdad para el dataset activo; todos los componentes consumen de ahí, lo que hace que cambiar de dataset sea instantáneo y consistente
+
+# Features pendientes
+
+- **Selector de período** — hoy está fijo en 7/30 días; permitir elegir semana, mes o rango custom
+- **Comparación lado a lado** — ver dos datasets simultáneamente para el demo
+- **Drill-down por métrica** — click en una KPI card para ver el detalle completo con estadísticas
+- **Win rate como métrica explícita** — hoy se muestra en alertas pero no tiene su propia card# Palvi-test
