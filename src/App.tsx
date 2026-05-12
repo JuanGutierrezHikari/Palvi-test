@@ -37,7 +37,6 @@ export default function App() {
 
   // Últimos 30 días para los gráficos
   const last30 = dataset.days.slice(-30)
-
   return (
     <div className="min-h-screen bg-gray-950 text-white p-6 max-w-5xl mx-auto">
 
