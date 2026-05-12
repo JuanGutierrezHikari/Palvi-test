@@ -22,6 +22,6 @@ Abrir http://localhost:5173
 
 # Features pendientes.
 
-- **Selector de período** — hoy está fijo en 7/30 días; permitir elegir semana, mes o rango custom.
-- **Comparación lado a lado** — ver dos datasets simultáneamente para el demo.
+- **Selector de período** — hoy está fijo en 7 días. permitir elegir semana, mes o rango personalizable.
+- **Comparación lado a lado** — ver dos datasets simultáneamente para realizar comparaciones.
 - **Drill-down por métrica** — click en una KPI card para ver el detalle completo con estadísticas.
